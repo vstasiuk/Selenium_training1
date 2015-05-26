@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class FirstTest {
     private  static FirefoxDriver driver;
-
+    private JenkinsHomePage jenkinsHomePage;
 
     @BeforeClass
     public static  void  startUpBrowser(){
@@ -22,7 +22,9 @@ public class FirstTest {
     @Test
     public void Login (){
 
-  /*      //Click login link
+       //Click login link
+
+
         driver.findElement(By.linkText("log in")).click();
 
         // Enter correct login and password and confirm
@@ -45,10 +47,10 @@ public class FirstTest {
         driver.findElement(By.id("yui-gen1-button")).click();
 
         //Verify error is shown (TBD)
-
+        String expected = "Invalid login information. Please try again."
         //driver.findElement(By.linkText("Invalid login information. Please try again."));
         //driver.findElement(By.xpath("//div[@id=\"main-panel-content\"]/div")).getText().trim().contains("Invalid login information. Please try again.");
-        //Assert.assertEquals(driver.findElement(By.xpath("//div[@id=\"main-panel-content\"]/div")).getText().trim(), "Invalid login information. Please try again. Try again");
+        Assert.assertTrue(driver.findElement(By.xpath("//div[@id=\"main-panel-content\"]/div")).getText().trim().contains(expected));
 
 
         //Verify incorrect password
@@ -58,14 +60,11 @@ public class FirstTest {
         driver.findElement(By.id("yui-gen1-button")).click();
         //Verify error is shown
 
-
-
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e){
             e.printStackTrace();
-        }*/
-
+        }
     }
     @Test
     public void SignUp(){
