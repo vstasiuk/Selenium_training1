@@ -1,5 +1,6 @@
 package com.gl.testselenium;
 
+import com.gltraining.selenium.JenkinsHomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -23,11 +24,12 @@ public class FirstTest {
     public void Login (){
 
        //Click login link
+        jenkinsHomePage = new JenkinsHomePage(driver);
+        jenkinsHomePage.clickLogin();
 
+        //driver.findElement(By.linkText("log in")).click();
 
-        driver.findElement(By.linkText("log in")).click();
-
-        // Enter correct login and password and confirm
+        /*// Enter correct login and password and confirm
         WebElement loginNameField = driver.findElement(By.id("j_username"));
         WebElement passwordField = driver.findElement(By.name("j_password"));
         loginNameField.sendKeys("vstasiuk");
@@ -47,7 +49,7 @@ public class FirstTest {
         driver.findElement(By.id("yui-gen1-button")).click();
 
         //Verify error is shown (TBD)
-        String expected = "Invalid login information. Please try again."
+        String expected = "Invalid login information. Please try again.";
         //driver.findElement(By.linkText("Invalid login information. Please try again."));
         //driver.findElement(By.xpath("//div[@id=\"main-panel-content\"]/div")).getText().trim().contains("Invalid login information. Please try again.");
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id=\"main-panel-content\"]/div")).getText().trim().contains(expected));
@@ -58,7 +60,7 @@ public class FirstTest {
         driver.findElement(By.id("j_username")).sendKeys("vstasiuk");
         driver.findElement(By.name("j_password")).sendKeys("qwerty123");
         driver.findElement(By.id("yui-gen1-button")).click();
-        //Verify error is shown
+        //Verify error is shown*/
 
         try {
             Thread.sleep(10000);
@@ -66,7 +68,7 @@ public class FirstTest {
             e.printStackTrace();
         }
     }
-    @Test
+    /*@Test
     public void SignUp(){
         driver.findElement(By.linkText("sign up")).click();
         // Click Sign up without data in fields
@@ -90,7 +92,7 @@ public class FirstTest {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     @AfterClass
     public  static  void sheetDownActivities(){
