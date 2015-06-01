@@ -1,4 +1,4 @@
-package com.gltraining.selenium;
+package com.gltraining.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,5 +28,18 @@ public class JenkinsLoginPage {
         PageFactory.initElements(wd, this);
     }
 
-//    public com.gltraining.selenium.JenkinsLoginPage
+    public JenkinsLoginPage setLoginValue(String value){
+        userLoginField.sendKeys(value);
+        return new JenkinsLoginPage(wd);
+    }
+    public JenkinsLoginPage setPasswordValue(String value){
+        passwordField.sendKeys(value);
+        return new JenkinsLoginPage(wd);
+    }
+
+    public JenkinsUserHomePage loginButtonClick (){
+        loginButton.click();
+        return new JenkinsUserHomePage(wd);
+    }
+//    public com.gltraining.selenium.pages.JenkinsLoginPage
 }

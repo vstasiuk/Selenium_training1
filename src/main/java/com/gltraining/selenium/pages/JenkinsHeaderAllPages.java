@@ -1,6 +1,5 @@
-package com.gltraining.selenium;
+package com.gltraining.selenium.pages;
 
-import com.gltraining.selenium.JenkinsLoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by vasyl.stasiuk on 5/26/2015.
  */
-public class JenkinsHomePage {
+public class JenkinsHeaderAllPages {
     private WebDriver wd;
 
     @FindBy(linkText = "log in")
@@ -18,7 +17,10 @@ public class JenkinsHomePage {
     @FindBy(linkText = "sign up")
     private WebElement signUpLink;
 
-    public JenkinsHomePage(WebDriver wd){
+    @FindBy (linkText = "log out")
+    private WebElement logOutLink;
+
+    public JenkinsHeaderAllPages(WebDriver wd){
         this.wd = wd;
         PageFactory.initElements(wd, this);
     }
@@ -26,5 +28,14 @@ public class JenkinsHomePage {
     public JenkinsLoginPage clickLogin(){
         loginLink.click();
         return new JenkinsLoginPage(wd);
+    }
+
+    public JenkinsSignUpPage clickSignUp(){
+        signUpLink.click();
+        return new JenkinsSignUpPage(wd);
+    }
+    public JenkinsHeaderAllPages clickLogOut(){
+        logOutLink.click();
+        return new JenkinsHeaderAllPages(wd);
     }
 }
