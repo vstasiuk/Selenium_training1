@@ -3,6 +3,7 @@ package com.gl.testselenium;
 import com.gltraining.selenium.pages.JenkinsHeaderAllPages;
 import com.gltraining.selenium.pages.JenkinsLoginPage;
 import com.gltraining.selenium.pages.JenkinsSignUpPage;
+import com.gltraining.selenium.pages.JenkinsUserHomePage;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,23 +17,22 @@ public class Tests {
     private JenkinsLoginPage jenkinsLoginPage;
     private JenkinsSignUpPage jenkinsSignUpPage;
 
+
     int userId = randomInt();
     String userName = "vsTest_name" + Integer.toString(userId);
     String password = "Te$t321_1";
 
     @BeforeClass
     public static  void  startUpBrowser(){
-
         driver = new FirefoxDriver();
+        driver.get("http://seltr-kbp1-1.synapse.com:8080/");
     }
 
 
     @Test
     public void aSignUp(){
-        driver.get("http://seltr-kbp1-1.synapse.com:8080/");
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsSignUpPage = new JenkinsSignUpPage(driver);
-
 
         //Verify user can be created
         jenkinsHeaderAllPages.clickSignUp();
@@ -44,17 +44,11 @@ public class Tests {
         jenkinsSignUpPage.signUpClick();
         jenkinsHeaderAllPages.clickLogOut();
         //Verify Success (TBD)
-
- /*       try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }*/
     }
 
     @Test
-    public void bLogin (){
-        driver.get("http://seltr-kbp1-1.synapse.com:8080/");
+    public void bLogin() {
+
         //Click login link
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsLoginPage = new JenkinsLoginPage(driver);
@@ -62,11 +56,10 @@ public class Tests {
 
 
         // Enter correct login and password and confirm
-
         jenkinsLoginPage.setLoginValue(userName);
         jenkinsLoginPage.setPasswordValue(password);
         jenkinsLoginPage.loginButtonClick();
-        //jenkinsHeaderAllPages.clickLogOut();
+        //jenkinsHeaderAllPages.clickLogOut(); // need add exception(TBD)
        /*
 
         //Verify correct page is loaded
@@ -94,13 +87,13 @@ public class Tests {
         driver.findElement(By.id("yui-gen1-button")).click();
         //Verify error is shown*/
 
-        try {
+/*        try {
             Thread.sleep(10000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
+    }*/
     }
-
 
     @AfterClass
     public  static  void sheetDownActivities(){
