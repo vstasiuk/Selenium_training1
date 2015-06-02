@@ -24,12 +24,12 @@ public class Tests {
     public static  void  startUpBrowser(){
 
         driver = new FirefoxDriver();
-        driver.get("http://seltr-kbp1-1.synapse.com:8080/");
     }
 
 
     @Test
     public void aSignUp(){
+        driver.get("http://seltr-kbp1-1.synapse.com:8080/");
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsSignUpPage = new JenkinsSignUpPage(driver);
 
@@ -42,6 +42,7 @@ public class Tests {
         jenkinsSignUpPage.setFullName("Full name for " + userName);
         jenkinsSignUpPage.setEmaail("vstasiuk+" + userId + "@gmail.com");
         jenkinsSignUpPage.signUpClick();
+        jenkinsHeaderAllPages.clickLogOut();
         //Verify Success (TBD)
 
  /*       try {
@@ -53,7 +54,7 @@ public class Tests {
 
     @Test
     public void bLogin (){
-
+        driver.get("http://seltr-kbp1-1.synapse.com:8080/");
         //Click login link
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsLoginPage = new JenkinsLoginPage(driver);
