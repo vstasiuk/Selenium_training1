@@ -48,6 +48,8 @@ public class Tests {
 
     @Test
     public void bLogin() {
+        private final String mainUserName = "vstasiuk";
+        private final String mainUserPassword = "Te$t321"
 
         //Click login link
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
@@ -60,6 +62,7 @@ public class Tests {
         jenkinsLoginPage.setPasswordValue(password);
         jenkinsLoginPage.loginButtonClick();
         //jenkinsHeaderAllPages.clickLogOut(); // need add exception(TBD)
+
        /*
 
         //Verify correct page is loaded

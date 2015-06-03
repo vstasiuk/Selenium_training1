@@ -20,6 +20,9 @@ public class JenkinsHeaderAllPages {
     @FindBy (linkText = "log out")
     private WebElement logOutLink;
 
+    @FindBy (id  = "searchform")
+    private WebElement searchField;
+
     public JenkinsHeaderAllPages(WebDriver wd){
         this.wd = wd;
         PageFactory.initElements(wd, this);
@@ -34,8 +37,13 @@ public class JenkinsHeaderAllPages {
         signUpLink.click();
         return new JenkinsSignUpPage(wd);
     }
+
     public JenkinsHeaderAllPages clickLogOut(){
         logOutLink.click();
         return new JenkinsHeaderAllPages(wd);
     }
+
+//    public JenkinsHeaderAllPages getSearchFieldWebElement(){
+//    }
+
 }

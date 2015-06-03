@@ -1,6 +1,9 @@
+package com.gl.testselenium;
+
 import com.gltraining.selenium.pages.JenkinsHeaderAllPages;
 import com.gltraining.selenium.pages.JenkinsUserHomePage;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,6 +27,11 @@ public class DeleteUsersTest {
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsUserHomePage = new JenkinsUserHomePage(driver);
         jenkinsUserHomePage.clickPeople();
+        driver.findElement(By.id("searchform"));
+
+        Actions builder = new Actions(driver);
+            builder.moveToElement()
+
 
         try {
             Thread.sleep(10000);
