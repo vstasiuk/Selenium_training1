@@ -12,12 +12,7 @@ import java.io.InputStream;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
-/**
- * Created by vasyl.stasiuk on 6/2/2015.
- */
 
 public abstract class BasePage<T extends BasePage<T>> extends LoadableComponent<T> {
 

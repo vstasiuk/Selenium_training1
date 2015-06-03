@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class DeleteUsersTest {
     private  static FirefoxDriver driver;
     private JenkinsUserHomePage jenkinsUserHomePage;
+    private JenkinsHeaderAllPages jenkinsHeaderAllPages;
 
     @BeforeClass
     public static  void  startUpBrowser(){
