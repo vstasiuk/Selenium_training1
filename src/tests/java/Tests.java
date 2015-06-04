@@ -1,22 +1,21 @@
 package com.gl.testselenium;
 
-import com.gltraining.selenium.pages.JenkinsHeaderAllPages;
-import com.gltraining.selenium.pages.JenkinsLoginPage;
-import com.gltraining.selenium.pages.JenkinsSignUpPage;
-import com.gltraining.selenium.pages.JenkinsUserHomePage;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+            import com.gltraining.selenium.pages.JenkinsHeaderAllPages;
+            import com.gltraining.selenium.pages.JenkinsLoginPage;
+            import com.gltraining.selenium.pages.JenkinsSignUpPage;
+            import org.openqa.selenium.By;
+            import org.openqa.selenium.WebElement;
+            import org.openqa.selenium.firefox.FirefoxDriver;
+            import org.testng.annotations.AfterClass;
+            import org.testng.annotations.BeforeClass;
+            import org.testng.annotations.Test;
+            import java.util.Random;
 
-import java.util.Random;
-
-public class Tests {
-    private  static FirefoxDriver driver;
-    private JenkinsHeaderAllPages jenkinsHeaderAllPages;
-    private JenkinsLoginPage jenkinsLoginPage;
-    private JenkinsSignUpPage jenkinsSignUpPage;
-
+    public class Tests {
+        private  static FirefoxDriver driver;
+        private JenkinsHeaderAllPages jenkinsHeaderAllPages;
+        private JenkinsLoginPage jenkinsLoginPage;
+        private JenkinsSignUpPage jenkinsSignUpPage;
 
     int userId = randomInt();
     String userName = "vsTest_name" + Integer.toString(userId);
@@ -44,12 +43,12 @@ public class Tests {
         jenkinsSignUpPage.signUpClick();
         jenkinsHeaderAllPages.clickLogOut();
         //Verify Success (TBD)
+
     }
 
     @Test
     public void bLogin() {
-        private final String mainUserName = "vstasiuk";
-        private final String mainUserPassword = "Te$t321"
+
 
         //Click login link
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
@@ -61,16 +60,13 @@ public class Tests {
         jenkinsLoginPage.setLoginValue(userName);
         jenkinsLoginPage.setPasswordValue(password);
         jenkinsLoginPage.loginButtonClick();
-        //jenkinsHeaderAllPages.clickLogOut(); // need add exception(TBD)
-
-       /*
-
-        //Verify correct page is loaded
         WebElement User_Name = driver.findElement(By.linkText("Vasyl Stasiuk"));
+        //jenkinsHeaderAllPages.clickLogOut(); // need add exception(TBD)
+       // Assert.assertEquals();
+       /*
 
         //Test log out
         driver.findElement(By.linkText("log out")).click();
-
         //Verify Login field is required (try login with blank log in field)
         driver.findElement(By.linkText("log in")).click();
         driver.findElement(By.name("j_password")).sendKeys("Te$t321");

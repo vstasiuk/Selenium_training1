@@ -2,6 +2,7 @@ package com.gltraining.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -43,7 +44,13 @@ public class JenkinsHeaderAllPages {
         return new JenkinsHeaderAllPages(wd);
     }
 
-//    public JenkinsHeaderAllPages getSearchFieldWebElement(){
-//    }
+    public JenkinsHeaderAllPages searchAndClickOnFirstMatch(String searchText){
+        Actions builder = new Actions(wd);
+        builder.moveToElement(searchField)
+                .sendKeys(searchText)
+                .moveByOffset(10, 10)
+                .click();
+        return new JenkinsHeaderAllPages(wd);
+    }
 
 }

@@ -41,5 +41,13 @@ public class JenkinsLoginPage {
         loginButton.click();
         return new JenkinsUserHomePage(wd);
     }
+
+    public JenkinsUserHomePage userLogin(String userName, String userPassword){
+        setLoginValue(userName);
+        setPasswordValue(userPassword);
+        loginButton.click();
+        return new JenkinsUserHomePage(wd);
+    }
+
 //    public com.gltraining.selenium.pages.JenkinsLoginPage
 }
