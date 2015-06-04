@@ -6,12 +6,13 @@ package com.gl.testselenium;
             import org.openqa.selenium.By;
             import org.openqa.selenium.WebElement;
             import org.openqa.selenium.firefox.FirefoxDriver;
+            import org.testng.Assert;
             import org.testng.annotations.AfterClass;
             import org.testng.annotations.BeforeClass;
             import org.testng.annotations.Test;
             import java.util.Random;
 
-    public class Tests {
+public class Tests {
         private  static FirefoxDriver driver;
         private JenkinsHeaderAllPages jenkinsHeaderAllPages;
         private JenkinsLoginPage jenkinsLoginPage;
@@ -32,35 +33,37 @@ package com.gl.testselenium;
     public void aSignUp(){
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsSignUpPage = new JenkinsSignUpPage(driver);
+        String fullUserName = "Full name for " + userName;
 
         //Verify user can be created
         jenkinsHeaderAllPages.clickSignUp();
         jenkinsSignUpPage.setUsername(userName);
         jenkinsSignUpPage.setPassword1(password);
         jenkinsSignUpPage.setPasswordConfirm(password);
-        jenkinsSignUpPage.setFullName("Full name for " + userName);
+        jenkinsSignUpPage.setFullName(fullUserName);
         jenkinsSignUpPage.setEmaail("vstasiuk+" + userId + "@gmail.com");
         jenkinsSignUpPage.signUpClick();
-        jenkinsHeaderAllPages.clickLogOut();
-        //Verify Success (TBD)
 
+        //Verify Success
+        String userNameOnPage = driver.findElement(By.xpath("//*[@id=\"header\"]/div[@class=\"login\"]/span/a[@class=\"model-link inside inverse\"]/b")).getText().trim();
+        Assert.assertEquals(userNameOnPage, fullUserName);
+
+        jenkinsHeaderAllPages.clickLogOut();
     }
 
     @Test
     public void bLogin() {
-
-
         //Click login link
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
         jenkinsLoginPage = new JenkinsLoginPage(driver);
         jenkinsHeaderAllPages.clickLogin();
-
 
         // Enter correct login and password and confirm
         jenkinsLoginPage.setLoginValue(userName);
         jenkinsLoginPage.setPasswordValue(password);
         jenkinsLoginPage.loginButtonClick();
         WebElement User_Name = driver.findElement(By.linkText("Vasyl Stasiuk"));
+
         //jenkinsHeaderAllPages.clickLogOut(); // need add exception(TBD)
        // Assert.assertEquals();
        /*
@@ -98,6 +101,7 @@ package com.gl.testselenium;
     public  static  void sheetDownActivities(){
         driver.quit();
     }
+
     //random int generator
     public int randomInt(){
         Random digits = new Random();

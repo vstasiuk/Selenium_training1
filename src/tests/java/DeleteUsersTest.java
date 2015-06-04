@@ -33,8 +33,8 @@ public class DeleteUsersTest {
         jenkinsUserHomePage = new JenkinsUserHomePage(driver);
         jenkinsLoginPage = new JenkinsLoginPage(driver);
         //login
-        jenkinsHeaderAllPages.clickLogin();
-        jenkinsLoginPage.userLogin(mainUserName, mainUserPassword);
+//        jenkinsHeaderAllPages.clickLogin();
+//        jenkinsLoginPage.userLogin(mainUserName, mainUserPassword);
 
         //find user to delete
         //jenkinsUserHomePage.clickPeople();
@@ -45,7 +45,6 @@ public class DeleteUsersTest {
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-
     }
     @AfterClass
     public  static  void sheetDownActivities(){
