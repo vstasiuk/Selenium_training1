@@ -68,12 +68,12 @@ public class JenkinsHeaderAllPages {
         return null;
     }
 
-    public UserProfilePage clickSearchResult(String textToSearch, String resultText){
-        submitTextToSearch(textToSearch);
+    public JenkinsUserHomePage clickSearchResult(String searchText, String resultText){
+        searchBox.sendKeys(searchText);
         WebElement webElement = getSearchResult(resultText);
         assert webElement != null;
         webElement.click();
-        return new UserProfilePage(driver, new User(resultText, resultText));
+        return new JenkinsUserHomePage(driver, new User(resultText, resultText));
     }
 
     public JenkinsHeaderAllPages searchAndClickOnFirstMatch(String searchText){
