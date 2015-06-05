@@ -28,7 +28,6 @@ public class Tests {
         driver.get("http://seltr-kbp1-1.synapse.com:8080/");
     }
 
-
     @Test
     public void aSignUp(){
         jenkinsHeaderAllPages = new JenkinsHeaderAllPages(driver);
