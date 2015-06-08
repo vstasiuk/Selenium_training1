@@ -61,7 +61,7 @@ public class Tests {
         jenkinsLoginPage.setLoginValue(userName);
         jenkinsLoginPage.setPasswordValue(password);
         jenkinsLoginPage.loginButtonClick();
-        WebElement User_Name = driver.findElement(By.linkText("Vasyl Stasiuk"));
+        //WebElement User_Name = driver.findElement(By.linkText("Vasyl Stasiuk"));
 
         //jenkinsHeaderAllPages.clickLogOut(); // need add exception(TBD)
        // Assert.assertEquals();

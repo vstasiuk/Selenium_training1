@@ -5,6 +5,8 @@ import com.gltraining.selenium.pages.JenkinsLoginPage;
 import com.gltraining.selenium.pages.JenkinsUserHomePage;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,11 +16,11 @@ import org.testng.annotations.Test;
  */
 public class DeleteUsersTest {
     private  static FirefoxDriver driver;
-    private  static FirefoxDriver driver;
     private JenkinsLoginPage jenkinsLoginPage;
     private JenkinsUserHomePage jenkinsUserHomePage;
     private JenkinsHeaderAllPages jenkinsHeaderAllPages;
-    private String searchText = "vsTest";
+    private String searchText = "vs";
+    private String resultText = "vsTest";
     final String mainUserName = "vstasiuk" ;
     final String mainUserPassword = "Te$t321";
 
@@ -34,15 +36,26 @@ public class DeleteUsersTest {
         jenkinsUserHomePage = new JenkinsUserHomePage(driver);
         jenkinsLoginPage = new JenkinsLoginPage(driver);
         //login
-//        jenkinsHeaderAllPages.clickLogin();
-//        jenkinsLoginPage.userLogin(mainUserName, mainUserPassword);
+        jenkinsHeaderAllPages.clickLogin();
+        jenkinsLoginPage.userLogin(mainUserName, mainUserPassword);
 
-        //find user to delete
-        //jenkinsUserHomePage.clickPeople();
-        jenkinsHeaderAllPages.searchAndClickOnFirstMatch(searchText);
+        //find user and delete
+        jenkinsHeaderAllPages.clickSearchResult(searchText, resultText);
+        //    jenkinsHeaderAllPages.waitForElemenLoaded();
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
+
+            jenkinsHeaderAllPages.clickDeleteLink();
+            jenkinsUserHomePage.clickConfirmButton();
+
+
 
         try {
-            Thread.sleep(9000);
+            Thread.sleep(1000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }

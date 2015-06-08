@@ -17,6 +17,9 @@ public class JenkinsUserHomePage {
     @FindBy(id = "search-box")
     private WebElement searchField;
 
+    @FindBy(id = "yui-gen1-button")
+    private WebElement confirmButton;
+
     public JenkinsUserHomePage(WebDriver wd) {
         this.wd = wd;
         PageFactory.initElements(wd, this);
@@ -24,6 +27,12 @@ public class JenkinsUserHomePage {
 
     public JenkinsUserHomePage clickPeople(){
         peopleLink.click();
+        return new JenkinsUserHomePage(wd);
+    }
+
+    public JenkinsUserHomePage clickConfirmButton(){
+        //Check that button exist (TBD)
+        confirmButton.click();
         return new JenkinsUserHomePage(wd);
     }
 
